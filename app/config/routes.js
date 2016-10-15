@@ -1,9 +1,8 @@
-var React = require('react');
-var Main = require('../components/Main');
-var Home = require('../components/Home');
-var Router = require('react-router');
-var Route = Router.Route;
+import React from 'react';
+import Paginator from '../components/Paginator';
+import Home from '../components/Home';
+import {Route, Router} from 'react-router';
 
-module.exports = (
-	<Route path="/" component={Main}></Route>
+export default (
+	<Route path="/" component={Paginator}></Route>
 );

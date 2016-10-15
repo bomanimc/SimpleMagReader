@@ -1,7 +1,7 @@
 import React from 'react';
-import Paginator from '../components/Paginator';
+import Main from '../components/Main';
 import {Route, Router} from 'react-router';
 
 export default (
-	<Route path="/" component={Paginator}></Route>
+	<Route path="/" component={Main}></Route>
 );

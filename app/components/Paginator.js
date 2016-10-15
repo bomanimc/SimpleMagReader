@@ -1,51 +1,31 @@
 import React from 'react';
-import { browserHistory } from 'react-router';
-import ArrowButton from './ArrowButton';
+import OnePage from './contentComponents/OnePage';
 
 var Paginator = React.createClass( {
-	getInitialState : function() {
-	    return {
-      		page : 1,
-      		length: 0
-	    };
-	},
-	componentDidMount: function() {
-		var magStructure = './mags/magStructure.json';
-
-		fetch(magStructure).then(
-			(response) => response.json()
-		).then(
-			(data) => {
-				console.log(data);
-				this.setState({
-					length: data.pages.length
-				});
-			}
-		)
-	},
-	nextPage: function() {
-		this.setState({
-			page: this.state.page + 1
-		}, 
-		function() {
-			browserHistory.push("/#" + this.state.page);
-		});	
-	},
-	prevPage: function() {
-		this.setState({
-			page: this.state.page - 1
-		}, 
-		function() {
-			browserHistory.push("/#" + this.state.page);
-		});
+	getComponentForType: function(type, assets) {
+		switch(type) {
+			case 'one-page':
+				return <OnePage assets={assets[0]} />
+				break;
+			case 'two-page':
+				return <div>TWO PAGE</div>
+				break;
+			default:
+				<div></div>
+		}	
 	},
 	render: function() {
-		return (
-			<div>
-				<ArrowButton changePage={this.prevPage} />
-				<ArrowButton changePage={this.nextPage} />
-			</div>
-		);
+		if (this.props.pages.length > 0) {
+			var page = this.props.pages[this.props.pageNumber - 1];
+
+			console.log(this.props.pageNumber);
+			console.log(page);
+
+			return this.getComponentForType(page.pageType, page.assets);
+		}
+		else {
+			return (<div></div>);
+		}
 	}
 });
 

@@ -6,25 +6,36 @@ var Paginator = React.createClass( {
 	getInitialState : function() {
 	    return {
       		page : 1,
+      		length: 0
 	    };
 	},
+	componentDidMount: function() {
+		var magStructure = './mags/magStructure.json';
+
+		fetch(magStructure).then(
+			(response) => response.json()
+		).then(
+			(data) => {
+				console.log(data);
+				this.setState({
+					length: data.pages.length
+				});
+			}
+		)
+	},
 	nextPage: function() {
-		console.log(this.state.page + 1)
 		this.setState({
 			page: this.state.page + 1
 		}, 
 		function() {
-			console.log("/#" + this.state.page)
 			browserHistory.push("/#" + this.state.page);
 		});	
 	},
 	prevPage: function() {
-		console.log(this.state.page - 1)
 		this.setState({
 			page: this.state.page - 1
 		}, 
 		function() {
-			console.log("/#" + this.state.page)
 			browserHistory.push("/#" + this.state.page);
 		});
 	},

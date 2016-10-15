@@ -1,0 +1,19 @@
+{  
+   "pages":[  
+      {  
+         "type" : "two-page",
+         "namedHash" : "fake",
+         "assetURI" : "fake"
+      },
+      {  
+         "type" : "two-page",
+         "uri" : "fake",
+         "assetURI" : "fake"
+      },
+      {  
+         "type" : "two-page",
+         "uri" : "fake",
+         "assetURI" : "fake"
+      }
+    ]
+}

@@ -44,8 +44,8 @@ var Main = React.createClass( {
 	render: function() {
 		return (
 			<div>
-				<ArrowButton changePage={this.prevPage} />
-				<ArrowButton changePage={this.nextPage} />
+				<ArrowButton changePage={this.prevPage} direction={-1} />
+				<ArrowButton changePage={this.nextPage} direction={1} />
 				<Paginator pages={this.state.pages} pageNumber={this.state.pageNumber} />
 			</div>
 		);

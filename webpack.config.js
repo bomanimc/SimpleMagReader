@@ -6,6 +6,9 @@ module.exports = {
 		path: path.join(__dirname, 'public'),
 		filename: "bundle.js"
 	},
+	resolve: {
+        extensions: ['', '.js', '.jsx', '.json']
+    },
 	devServer: {
 		contentBase: path.join(__dirname, 'public'),
 		inline: true,
@@ -22,7 +25,12 @@ module.exports = {
 				query: {
 					presets: ['react', 'es2015']
 				}
-			}
+			},
+			{ 
+				test: /\.json$/, 
+				exclude: /node_modules/,
+				loader: 'json'
+			},
 		]
 	}
 }

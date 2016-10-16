@@ -1,0 +1,15 @@
+.arrow {
+	height: 60px;
+}
+
+.arrowLeft {
+	float: left;
+}
+
+.arrowRight {
+	float: right;
+}
+
+.arrowIcon {
+	height: 60px;
+}

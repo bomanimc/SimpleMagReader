@@ -1,13 +1,18 @@
 .arrow {
-	height: 60px;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
 }
 
 .arrowLeft {
 	float: left;
+	left: 15px;
 }
 
 .arrowRight {
 	float: right;
+	right: 15px;
 }
 
 .arrowIcon {

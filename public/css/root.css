@@ -1,8 +1,21 @@
-body {
+html, body {
 	margin: 0px;
+	height: 100%;
+	width: 100%;
+}
+
+.container-fluid {
+	height: 100%;
+}
+
+#root {
+	height: 100%;
+	width: 100%;
+    min-height:100%;
 }
 
 #app {
 	width: 100%;
 	height: 100%;
+	margin: 0px
 }

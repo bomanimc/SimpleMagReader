@@ -25454,7 +25454,7 @@
 	
 	var _Paginator2 = _interopRequireDefault(_Paginator);
 	
-	var _ArrowButton = __webpack_require__(226);
+	var _ArrowButton = __webpack_require__(228);
 	
 	var _ArrowButton2 = _interopRequireDefault(_ArrowButton);
 	
@@ -25503,8 +25503,8 @@
 				'div',
 				null,
 				_react2.default.createElement(_ArrowButton2.default, { changePage: this.prevPage, direction: -1 }),
-				_react2.default.createElement(_ArrowButton2.default, { changePage: this.nextPage, direction: 1 }),
-				_react2.default.createElement(_Paginator2.default, { pages: this.state.pages, pageNumber: this.state.pageNumber })
+				_react2.default.createElement(_Paginator2.default, { pages: this.state.pages, pageNumber: this.state.pageNumber }),
+				_react2.default.createElement(_ArrowButton2.default, { changePage: this.nextPage, direction: 1 })
 			);
 		}
 	});
@@ -25521,11 +25521,21 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _OnePage = __webpack_require__(225);
+	var _bind = __webpack_require__(225);
+	
+	var _bind2 = _interopRequireDefault(_bind);
+	
+	var _Paginator = __webpack_require__(226);
+	
+	var _Paginator2 = _interopRequireDefault(_Paginator);
+	
+	var _OnePage = __webpack_require__(227);
 	
 	var _OnePage2 = _interopRequireDefault(_OnePage);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var cx = _bind2.default.bind(_Paginator2.default);
 	
 	var Paginator = _react2.default.createClass({
 		displayName: 'Paginator',
@@ -25533,13 +25543,21 @@
 		getComponentForType: function getComponentForType(type, assets) {
 			switch (type) {
 				case 'one-page':
-					return _react2.default.createElement(_OnePage2.default, { assets: assets[0] });
+					return _react2.default.createElement(
+						'div',
+						{ className: 'col-xs-10' },
+						_react2.default.createElement(_OnePage2.default, { assets: assets[0] })
+					);
 					break;
 				case 'two-page':
 					return _react2.default.createElement(
 						'div',
-						null,
-						'TWO PAGE'
+						{ className: 'col-xs-10' },
+						_react2.default.createElement(
+							'div',
+							null,
+							'TWO PAGE'
+						)
 					);
 					break;
 				default:
@@ -25566,6 +25584,67 @@
 /* 225 */
 /***/ function(module, exports, __webpack_require__) {
 
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+	  Copyright (c) 2016 Jed Watson.
+	  Licensed under the MIT License (MIT), see
+	  http://jedwatson.github.io/classnames
+	*/
+	/* global define */
+	
+	(function () {
+		'use strict';
+	
+		var hasOwn = {}.hasOwnProperty;
+	
+		function classNames () {
+			var classes = [];
+	
+			for (var i = 0; i < arguments.length; i++) {
+				var arg = arguments[i];
+				if (!arg) continue;
+	
+				var argType = typeof arg;
+	
+				if (argType === 'string' || argType === 'number') {
+					classes.push(this && this[arg] || arg);
+				} else if (Array.isArray(arg)) {
+					classes.push(classNames.apply(this, arg));
+				} else if (argType === 'object') {
+					for (var key in arg) {
+						if (hasOwn.call(arg, key) && arg[key]) {
+							classes.push(this && this[key] || key);
+						}
+					}
+				}
+			}
+	
+			return classes.join(' ');
+		}
+	
+		if (typeof module !== 'undefined' && module.exports) {
+			module.exports = classNames;
+		} else if (true) {
+			// register as 'classnames', consistent with npm package name
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
+				return classNames;
+			}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+		} else {
+			window.classNames = classNames;
+		}
+	}());
+
+
+/***/ },
+/* 226 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+	module.exports = {"paginatorCol":"Paginator__paginatorCol___32Zp_"};
+
+/***/ },
+/* 227 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 	
 	var _react = __webpack_require__(1);
@@ -25589,7 +25668,7 @@
 	module.exports = OnePage;
 
 /***/ },
-/* 226 */
+/* 228 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25598,28 +25677,40 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactRouter = __webpack_require__(159);
+	var _bind = __webpack_require__(225);
 	
-	var _assetsMap = __webpack_require__(227);
+	var _bind2 = _interopRequireDefault(_bind);
+	
+	var _assetsMap = __webpack_require__(229);
 	
 	var _assetsMap2 = _interopRequireDefault(_assetsMap);
 	
-	var _arrow = __webpack_require__(228);
+	var _arrow = __webpack_require__(230);
 	
 	var _arrow2 = _interopRequireDefault(_arrow);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var cx = _bind2.default.bind(_arrow2.default);
 	
 	var ArrowButton = _react2.default.createClass({
 		displayName: 'ArrowButton',
 	
 		render: function render() {
 			var arrow = this.props.direction == 1 ? _assetsMap2.default.rightArrow : _assetsMap2.default.leftArrow;
-			console.log(_arrow2.default);
+			var arrowClasses = cx({
+				arrow: true
+			});
+			var arrowParent = (0, _bind2.default)("col-xs-1", cx('arrowParent'));
+			console.log(arrowParent);
 			return _react2.default.createElement(
 				'div',
-				{ className: _arrow2.default.arrow },
-				_react2.default.createElement('img', { className: _arrow2.default.arrowIcon, onClick: this.props.changePage, src: arrow })
+				{ className: arrowParent },
+				_react2.default.createElement(
+					'div',
+					{ className: arrowClasses },
+					_react2.default.createElement('img', { className: cx('arrowIcon'), onClick: this.props.changePage, src: arrow })
+				)
 			);
 		}
 	});
@@ -25627,7 +25718,7 @@
 	module.exports = ArrowButton;
 
 /***/ },
-/* 227 */
+/* 229 */
 /***/ function(module, exports) {
 
 	module.exports = {
@@ -25636,10 +25727,11 @@
 	};
 
 /***/ },
-/* 228 */
+/* 230 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
+	module.exports = {"arrowButtonCol":"arrow__arrowButtonCol___3x-ic","arrowParent":"arrow__arrowParent___3p003","arrow":"arrow__arrow___21HTJ","arrowIcon":"arrow__arrowIcon___2dUqZ"};
 
 /***/ }
 /******/ ]);

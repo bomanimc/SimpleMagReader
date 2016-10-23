@@ -9,13 +9,15 @@ var ArrowButton = React.createClass( {
 	render: function() {
 		var arrow = (this.props.direction == 1) ? Assets.rightArrow : Assets.leftArrow;
 		var arrowClasses = cx({
-			arrowLeft: this.props.direction == -1,
-			arrowRight: this.props.direction == 1,
 			arrow: true
-		})
+		});
+		var arrowParent = classNames("col-xs-2", cx('arrowParent'));
+		console.log(arrowParent);
 		return (
-			<div className={arrowClasses}>
-				<img className={cx('arrowIcon')} onClick={this.props.changePage} src={arrow} />
+			<div className={arrowParent}>
+				<div className={arrowClasses}>
+					<img className={cx('arrowIcon')} onClick={this.props.changePage} src={arrow} />
+				</div>
 			</div>
 		);
 	}

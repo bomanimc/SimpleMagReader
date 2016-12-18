@@ -8,16 +8,14 @@ var cx = classNames.bind(styles);
 var ArrowButton = React.createClass( {
 	render: function() {
 		var arrow = (this.props.direction == 1) ? Assets.rightArrow : Assets.leftArrow;
-		var arrowClasses = cx({
-			arrow: true
+		var arrowDirection = cx({
+			arrowLeft: (this.props.direction == -1),
+			arrowRight: (this.props.direction == 1)
 		});
-		var arrowParent = classNames("col-xs-2", cx('arrowParent'));
-		console.log(arrowParent);
+
 		return (
-			<div className={arrowParent}>
-				<div className={arrowClasses}>
-					<img className={cx('arrowIcon')} onClick={this.props.changePage} src={arrow} />
-				</div>
+			<div className={classNames(cx('arrow'), arrowDirection)}>
+				<img onClick={this.props.changePage} src={arrow} />
 			</div>
 		);
 	}

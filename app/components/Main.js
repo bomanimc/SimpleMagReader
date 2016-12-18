@@ -1,7 +1,11 @@
 import React from 'react';
 import { browserHistory } from 'react-router';
+import classNames from 'classnames/bind';
+import styles from '../styles/Main.css';
 import Paginator from './Paginator';
 import ArrowButton from './ArrowButton';
+
+var cx = classNames.bind(styles);
 
 var Main = React.createClass( {
 	getInitialState : function() {
@@ -43,7 +47,7 @@ var Main = React.createClass( {
 	},
 	render: function() {
 		return (
-			<div>
+			<div className={cx('main')}>
 				<ArrowButton changePage={this.prevPage} direction={-1} />
 				<Paginator pages={this.state.pages} pageNumber={this.state.pageNumber} />
 				<ArrowButton changePage={this.nextPage} direction={1} />

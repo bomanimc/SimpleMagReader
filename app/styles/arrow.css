@@ -1,21 +1,14 @@
-.arrowButtonCol {
-	height: 100%;
-	display: inline-block;
-}
-
-.arrowParent {
-	margin-top: 50%;
-}
-
 .arrow {
-	margin-top: 50%;
-	transform: translateY(-50%);
-	-webkit-transform: translateY(-50%);
+	position: absolute;
+	top: 50%;
 	width: 60px;
 	height: 60px;
 }
 
-.arrow img {
-	height: 100%;
-	width: 100%;
+.arrowLeft {
+	left: 0%;
+}
+
+.arrowRight {
+	right: 0%;
 }

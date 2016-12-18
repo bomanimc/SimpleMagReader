@@ -12,7 +12,6 @@ var Main = React.createClass( {
 	    return {
       		pageNumber : 1,
       		pages: [],
-      		length: 0
 	    };
 	},
 	componentDidMount: function() {
@@ -23,27 +22,30 @@ var Main = React.createClass( {
 		).then(
 			(data) => {
 				this.setState({
-					pages: data.pages,
-					length: data.pages.length
+					pages: data.pages
 				});
 			}
 		)
 	},
 	nextPage: function() {
-		this.setState({
-			pageNumber: this.state.pageNumber + 1
-		}, 
-		function() {
-			browserHistory.push("/#" + this.state.pageNumber);
-		});	
+		if (this.state.pageNumber < this.state.pages.length) {
+			this.setState({
+				pageNumber: this.state.pageNumber + 1
+			}, 
+			function() {
+				browserHistory.push("/#" + this.state.pageNumber);
+			});
+		}
 	},
 	prevPage: function() {
-		this.setState({
-			pageNumber: this.state.pageNumber - 1
-		}, 
-		function() {
-			browserHistory.push("/#" + this.state.pageNumber);
-		});
+		if (this.state.pageNumber < 0) {
+			this.setState({
+				pageNumber: this.state.pageNumber - 1
+			}, 
+			function() {
+				browserHistory.push("/#" + this.state.pageNumber);
+			});
+		}
 	},
 	render: function() {
 		return (

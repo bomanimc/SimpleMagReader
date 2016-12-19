@@ -3,12 +3,12 @@ import classNames from 'classnames/bind';
 import Assets from '../../public/assets/assets.map.json';
 import styles from '../styles/arrow.css';
 
-var cx = classNames.bind(styles);
+let cx = classNames.bind(styles);
 
-var ArrowButton = React.createClass( {
-	render: function() {
-		var arrow = (this.props.direction == 1) ? Assets.rightArrow : Assets.leftArrow;
-		var arrowSettings = cx({
+class ArrowButton extends React.Component {
+	render() {
+		let arrow = (this.props.direction == 1) ? Assets.rightArrow : Assets.leftArrow;
+		let arrowSettings = cx({
 			arrowLeft: this.props.direction == -1,
 			arrowRight: this.props.direction == 1,
 			hide: this.props.shouldHide(this.props.direction)
@@ -20,6 +20,6 @@ var ArrowButton = React.createClass( {
 			</div>
 		);
 	}
-});
+}
 
-module.exports = ArrowButton;
+export default ArrowButton;

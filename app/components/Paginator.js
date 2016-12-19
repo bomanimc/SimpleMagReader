@@ -3,10 +3,10 @@ import classNames from 'classnames/bind';
 import styles from '../styles/Paginator.css';
 import OnePage from './contentComponents/OnePage';
 
-var cx = classNames.bind(styles);
+let cx = classNames.bind(styles);
 
-var Paginator = React.createClass( {
-	getComponentForType: function(type, assets) {
+class Paginator extends React.Component {
+	getComponentForType(type, assets) {
 		switch(type) {
 			case 'one-page':
 				return (
@@ -23,15 +23,12 @@ var Paginator = React.createClass( {
 				);
 				break;
 			default:
-				<div></div>
+				return (<div></div>);
 		}	
-	},
-	render: function() {
+	}
+	render() {
 		if (this.props.pages.length > 0) {
-			var page = this.props.pages[this.props.pageNumber - 1];
-
-			console.log(this.props.pageNumber);
-			console.log(page);
+			let page = this.props.pages[this.props.pageNumber - 1];
 
 			return this.getComponentForType(page.pageType, page.assets);
 		}
@@ -39,6 +36,6 @@ var Paginator = React.createClass( {
 			return (<div></div>);
 		}
 	}
-});
+}
 
-module.exports = Paginator;
+export default Paginator;

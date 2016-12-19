@@ -7,6 +7,7 @@ let cx = classNames.bind(styles);
 
 class Paginator extends React.Component {
 	getComponentForType(type, assets) {
+
 		switch(type) {
 			case 'one-page':
 				return (
@@ -23,21 +24,18 @@ class Paginator extends React.Component {
 		}	
 	}
 	render() {
-		return (
-			<div className={cx('paginator')}>
-				
-			</div>
-		);	
+		let page = this.props.pages[this.props.pageNumber - 1];
+		
+		return this.props.pages.length > 0
+			?(
+				<div className={cx('paginator')}>
+					{this.getComponentForType(page.pageType, page.assets)}
+				</div>
+			)
+			:(
+				<div></div>
+			)
 	}
 }
 
 export default Paginator;
-
-// if (this.props.pages.length > 0) {
-// 			let page = this.props.pages[this.props.pageNumber - 1];
-
-// 			return this.getComponentForType(page.pageType, page.assets);
-// 		}
-// 		else {
-// 			return (<div></div>);
-// 		}

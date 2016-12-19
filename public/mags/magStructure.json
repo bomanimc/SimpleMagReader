@@ -11,14 +11,15 @@
          "pageType" : "two-page",
          "uri" : "fake",
          "assets" : [
-            "http://dialupstuff.com/magazineAssets/summer2016/page-4.jpg"
+            "http://dialupstuff.com/magazineAssets/summer2016/page-4.jpg",
+            "http://dialupstuff.com/magazineAssets/summer2016/page-5.jpg"
          ]
       },
       {  
          "pageType" : "one-page",
          "uri" : "fake",
          "assets" : [
-            "http://dialupstuff.com/magazineAssets/summer2016/page-5.jpg"
+            "http://dialupstuff.com/magazineAssets/summer2016/page-6.jpg"
          ]
       }
     ]

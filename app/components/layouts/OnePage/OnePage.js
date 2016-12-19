@@ -7,7 +7,9 @@ let cx = classNames.bind(styles);
 class OnePage extends React.Component {
 	render() {
 		return (
-			<img className={cx('page')} src={this.props.assets} />
+			<div className={cx('wrapper')}>
+				<img className={cx('page')} src={this.props.assets[0]} />
+			</div>
 		);
 	}
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames/bind';
 import styles from '../styles/Paginator.css';
 import OnePage from './layouts/OnePage/OnePage';
+import TwoPage from './layouts/TwoPage/TwoPage';
 
 let cx = classNames.bind(styles);
 
@@ -11,12 +12,12 @@ class Paginator extends React.Component {
 		switch(type) {
 			case 'one-page':
 				return (
-						<OnePage assets={assets[0]} />
+						<OnePage assets={assets} />
 				);
 				break;
 			case 'two-page':
 				return (
-						<div>TWO PAGE</div>
+						<TwoPage assets={assets} />
 				);
 				break;
 			default:

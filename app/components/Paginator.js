@@ -10,16 +10,12 @@ class Paginator extends React.Component {
 		switch(type) {
 			case 'one-page':
 				return (
-					<div className='col-xs-8'>
 						<OnePage assets={assets[0]} />
-					</div>
 				);
 				break;
 			case 'two-page':
 				return (
-					<div className='col-xs-8'>
 						<div>TWO PAGE</div>
-					</div>
 				);
 				break;
 			default:
@@ -27,15 +23,21 @@ class Paginator extends React.Component {
 		}	
 	}
 	render() {
-		if (this.props.pages.length > 0) {
-			let page = this.props.pages[this.props.pageNumber - 1];
-
-			return this.getComponentForType(page.pageType, page.assets);
-		}
-		else {
-			return (<div></div>);
-		}
+		return (
+			<div className={cx('paginator')}>
+				
+			</div>
+		);	
 	}
 }
 
 export default Paginator;
+
+// if (this.props.pages.length > 0) {
+// 			let page = this.props.pages[this.props.pageNumber - 1];
+
+// 			return this.getComponentForType(page.pageType, page.assets);
+// 		}
+// 		else {
+// 			return (<div></div>);
+// 		}

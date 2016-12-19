@@ -1,3 +1,5 @@
-.paginatorCol {
-	display: inline-block;
+.paginator {
+	width: 80%;
+	height: 90%;
+	background: red;
 }

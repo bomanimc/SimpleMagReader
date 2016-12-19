@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames/bind';
 import styles from '../styles/Paginator.css';
-import OnePage from './contentComponents/OnePage';
+import OnePage from './layouts/OnePage/OnePage';
 
 let cx = classNames.bind(styles);
 
@@ -25,7 +25,7 @@ class Paginator extends React.Component {
 	}
 	render() {
 		let page = this.props.pages[this.props.pageNumber - 1];
-		
+
 		return this.props.pages.length > 0
 			?(
 				<div className={cx('paginator')}>

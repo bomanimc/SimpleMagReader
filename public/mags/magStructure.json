@@ -4,21 +4,21 @@
          "pageType" : "one-page",
          "namedHash" : "fake",
          "assets" : [
-            "https://s-media-cache-ak0.pinimg.com/originals/a8/ea/66/a8ea66337f085d7b7b84dc5f6127f9c3.jpg"
+            "http://dialupstuff.com/magazineAssets/summer2016/page-3.jpg"
          ]
       },
       {  
          "pageType" : "two-page",
          "uri" : "fake",
          "assets" : [
-            "http://www.tuvie.com/wp-content/uploads/supersonic-2021-futuristic-car1.jpg"
+            "http://dialupstuff.com/magazineAssets/summer2016/page-4.jpg"
          ]
       },
       {  
          "pageType" : "one-page",
          "uri" : "fake",
          "assets" : [
-            "http://psipunk.com/wp-content/uploads/2008/12/eco-cars-electricity-powered-lynx-offers-a-safe-ride-03.jpg"
+            "http://dialupstuff.com/magazineAssets/summer2016/page-5.jpg"
          ]
       }
     ]

@@ -1,13 +1,13 @@
 import React from 'react';
 
-var OnePage = React.createClass( {
-	render: function() {
+class OnePage extends React.Component {
+	render() {
 		return (
 			<div>
 				<img src={this.props.assets} />
 			</div>
 		);
 	}
-});
+}
 
-module.exports = OnePage;
+export default OnePage;

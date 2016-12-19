@@ -10,7 +10,7 @@ let cx = classNames.bind(styles);
 class Main extends React.Component {
 	constructor(props) {
         super(props);
-        
+
         this.state = {
       		pageNumber : 1,
       		pages: []
@@ -24,10 +24,20 @@ class Main extends React.Component {
 		).then(
 			(data) => {
 				this.setState({
+					pageNumber: this.getCurrentPage(this.props.location),
 					pages: data.pages
 				});
 			}
 		)
+	}
+	componentWillReceiveProps(nextProps) {
+		this.setState({
+			pageNumber: this.getCurrentPage(nextProps.location),
+		});
+	}
+	getCurrentPage(location) {
+		let page = location.hash.match(/\d+/g);
+		return page !== null ? parseInt(page[0]) : 1;
 	}
 	nextPage() {
 		if (this.state.pageNumber < this.state.pages.length) {

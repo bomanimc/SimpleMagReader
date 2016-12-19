@@ -5,17 +5,19 @@ import styles from '../styles/Main.css';
 import Paginator from './Paginator';
 import ArrowButton from './ArrowButton';
 
-var cx = classNames.bind(styles);
+let cx = classNames.bind(styles);
 
-var Main = React.createClass( {
-	getInitialState : function() {
-	    return {
+class Main extends React.Component {
+	constructor(props) {
+        super(props);
+        
+        this.state = {
       		pageNumber : 1,
-      		pages: [],
+      		pages: []
 	    };
-	},
-	componentDidMount: function() {
-		var magStructure = './mags/magStructure.json';
+    }
+	componentDidMount() {
+		let magStructure = './mags/magStructure.json';
 
 		fetch(magStructure).then(
 			(response) => response.json()
@@ -26,8 +28,8 @@ var Main = React.createClass( {
 				});
 			}
 		)
-	},
-	nextPage: function() {
+	}
+	nextPage() {
 		if (this.state.pageNumber < this.state.pages.length) {
 			this.setState({
 				pageNumber: this.state.pageNumber + 1
@@ -36,8 +38,8 @@ var Main = React.createClass( {
 				browserHistory.push("/#" + this.state.pageNumber);
 			});
 		}
-	},
-	prevPage: function() {
+	}
+	prevPage() {
 		if (this.state.pageNumber > 0) {
 			this.setState({
 				pageNumber: this.state.pageNumber - 1
@@ -46,24 +48,24 @@ var Main = React.createClass( {
 				browserHistory.push("/#" + this.state.pageNumber);
 			});
 		}
-	},
-	getShouldHide: function(direction) {
+	}
+	getShouldHide(direction) {
 		if (direction == -1) {
 			return this.state.pageNumber == 1;
 		}
 		else {
 			return this.state.pageNumber == this.state.pages.length;
 		}
-	},
-	render: function() {
+	}
+	render() {
 		return (
 			<div className={cx('main')}>
-				<ArrowButton changePage={this.prevPage} direction={-1} shouldHide={this.getShouldHide}/>
+				<ArrowButton changePage={this.prevPage.bind(this)} direction={-1} shouldHide={this.getShouldHide.bind(this)}/>
 				<Paginator pages={this.state.pages} pageNumber={this.state.pageNumber} />
-				<ArrowButton changePage={this.nextPage} direction={1} shouldHide={this.getShouldHide}/>
+				<ArrowButton changePage={this.nextPage.bind(this)} direction={1} shouldHide={this.getShouldHide.bind(this)}/>
 			</div>
 		);
 	}
-});
+}
 
-module.exports = Main;
+export default Main;

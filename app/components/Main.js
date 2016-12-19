@@ -30,6 +30,11 @@ class Main extends React.Component {
 			}
 		)
 	}
+	componentWillReceiveProps(nextProps) {
+		this.setState({
+			pageNumber: this.getCurrentPage(nextProps.location),
+		});
+	}
 	getCurrentPage(location) {
 		let page = location.hash.match(/\d+/g);
 		return page !== null ? parseInt(page[0]) : 1;

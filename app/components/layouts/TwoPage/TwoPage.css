@@ -1,6 +1,5 @@
 .wrapper {
 	height: 100%;
-	width: 100%;
 }
 
 .page {
@@ -9,9 +8,5 @@
 }
 
 .page-left {
-	float: left;
-}
-
-.page-right {
-	float: right;
+	margin-right: 5px;
 }

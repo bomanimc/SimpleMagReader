@@ -3,6 +3,9 @@ import Main from './Main';
 import {Route, Router, browserHistory} from 'react-router';
 
 class Routes extends React.Component {
+	getChildContext() {
+		return { location: this.props.location }
+	}
 	render() {
 		return (
 			<Router history={browserHistory} onUpdate={() => window.scrollTo(0, 0)}>
@@ -10,6 +13,10 @@ class Routes extends React.Component {
 			</Router>
 		);
 	}
+}
+
+Routes.childContextTypes = {
+	location: React.PropTypes.object
 }
 
 export default Routes;

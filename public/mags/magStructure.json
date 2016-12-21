@@ -1,27 +1,36 @@
 {  
-   "pages":[  
-      {  
-         "pageType" : "one-page",
-         "namedHash" : "fake",
-         "assets" : [
-            "mags/OnePageTest.png"
-         ]
-      },
-      {  
-         "pageType" : "two-page",
-         "uri" : "fake",
-         "assets" : [
-            "http://dialupstuff.com/magazineAssets/summer2016/page-4.jpg",
-            "http://dialupstuff.com/magazineAssets/summer2016/page-5.jpg"
-         ]
-      },
-      {  
-         "pageType" : "two-page",
-         "uri" : "fake",
-         "assets" : [
-            "http://dialupstuff.com/magazineAssets/summer2016/page-6.jpg",
-            "http://dialupstuff.com/magazineAssets/summer2016/page-7.jpg"
-         ]
-      }
+    "sections":[
+        {
+            "pageNumber": 1,
+            "content" : {  
+                "pageType" : "one-page",
+                "namedHash" : "fake",
+                "assets" : [
+                    "mags/OnePageTest.png"
+                ]
+            }
+        },
+        {
+            "pageNumber": 2,
+            "content" : {  
+                "pageType" : "two-page",
+                "uri" : "fake",
+                "assets" : [
+                    "http://dialupstuff.com/magazineAssets/summer2016/page-4.jpg",
+                    "http://dialupstuff.com/magazineAssets/summer2016/page-5.jpg"
+                ]
+            }
+        },
+        {
+            "pageNumber": 4,
+            "content" : {  
+                "pageType" : "two-page",
+                "uri" : "fake",
+                "assets" : [
+                    "http://dialupstuff.com/magazineAssets/summer2016/page-6.jpg",
+                    "http://dialupstuff.com/magazineAssets/summer2016/page-7.jpg"
+                ]
+            }
+        }
     ]
 }

@@ -14,7 +14,8 @@ class Main extends React.Component {
 
         this.state = {
       		pageNumber : 1,
-      		pages: []
+      		pages: [],
+      		sectionIndex: 0
 	    };
     }
 	componentDidMount() {
@@ -25,8 +26,8 @@ class Main extends React.Component {
 		).then(
 			(data) => {
 				this.setState({
-					pageNumber: this.getCurrentPage(this.props.location),
-					pages: data.pages
+					pageNumber: data.sections[this.state.sectionIndex].pageNumber,
+					pages: data.sections,
 				});
 			}
 		)
@@ -41,9 +42,10 @@ class Main extends React.Component {
 		return page !== null ? parseInt(page[0]) : 1;
 	}
 	nextPage() {
-		if (this.state.pageNumber < this.state.pages.length) {
+		if (this.state.sectionIndex < this.state.pages.length) {
 			this.setState({
-				pageNumber: this.state.pageNumber + 1
+				sectionIndex: this.state.sectionIndex + 1,
+				pageNumber: this.state.pages[this.state.sectionIndex + 1].pageNumber
 			}, 
 			function() {
 				browserHistory.push("/#" + this.state.pageNumber);
@@ -51,9 +53,10 @@ class Main extends React.Component {
 		}
 	}
 	prevPage() {
-		if (this.state.pageNumber > 0) {
+		if (this.state.sectionIndex > 0) {
 			this.setState({
-				pageNumber: this.state.pageNumber - 1
+				sectionIndex: this.state.sectionIndex - 1,
+				pageNumber: this.state.pages[this.state.sectionIndex - 1].pageNumber
 			}, 
 			function() {
 				browserHistory.push("/#" + this.state.pageNumber);
@@ -85,7 +88,7 @@ class Main extends React.Component {
 					<ActionBar pageNumber={this.state.pageNumber} pagesLength={this.state.pages.length} setPage={this.setPage.bind(this)} />
 				</div>
 				<div className={cx('content')}>
-					<Paginator pages={this.state.pages} pageNumber={this.state.pageNumber} />
+					<Paginator pages={this.state.pages} sectionIndex={this.state.sectionIndex} />
 				</div>
 				<ArrowButton changePage={this.prevPage.bind(this)} direction={-1} shouldHide={this.getShouldHide.bind(this)}/>
 				<ArrowButton changePage={this.nextPage.bind(this)} direction={1} shouldHide={this.getShouldHide.bind(this)}/>

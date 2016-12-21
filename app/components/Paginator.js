@@ -25,12 +25,12 @@ class Paginator extends React.Component {
 		}	
 	}
 	render() {
-		let page = this.props.pages[this.props.pageNumber - 1];
+		let section = this.props.pages[this.props.sectionIndex];
 
 		return this.props.pages.length > 0
 			?(
 				<div className={cx('paginator')}>
-					{this.getComponentForType(page.pageType, page.assets)}
+					{this.getComponentForType(section.content.pageType, section.content.assets)}
 				</div>
 			)
 			:(

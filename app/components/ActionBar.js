@@ -6,22 +6,11 @@ import styles from '../styles/ActionBar.css';
 let cx = classNames.bind(styles);
 
 class ActionBar extends React.Component {
-	constructor(props) {
-        super(props);
-
-        this.state = {
-      		value : 1
-	    };
-    }
 	handleInput(event) {
 		this.props.setPage(event.target.value);
-
-		this.setState({
-			value: event.target.value
-		})
 	}
 	render() {
-		let input = <input onChange={this.handleInput.bind(this)} min="1" value={this.state.value} type="number" max={this.props.pagesLength}/>;
+		let input = <input onChange={this.handleInput.bind(this)} min="1" value={this.props.page} type="number" max={this.props.pagesLength}/>;
 		let pagesMax = <span id="pages-max">{this.props.pagesLength}</span>;
 
 		return (

@@ -124,7 +124,7 @@ class Main extends React.Component {
 		return (
 			<div className={cx('main')}>
 				<div className={cx('header')}>
-					<ActionBar pageNumber={this.state.pageNumber} pagesLength={this.state.length} setPage={this.setPage.bind(this)} />
+					<ActionBar page={this.getPageHash(this.props.location)} pageNumber={this.state.pageNumber} pagesLength={this.state.length} setPage={this.setPage.bind(this)} />
 				</div>
 				<div className={cx('content')}>
 					<Paginator pages={this.state.pages} sectionIndex={this.state.sectionIndex} />

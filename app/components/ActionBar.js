@@ -6,8 +6,11 @@ import styles from '../styles/ActionBar.css';
 let cx = classNames.bind(styles);
 
 class ActionBar extends React.Component {
+	handleInput(event) {
+		this.props.setPage(event.target.value);
+	}
 	render() {
-		let input = <input id="pages-input" min="1" defaultValue={this.props.pageNumber} type="number" max={this.props.pagesLength}/>;
+		let input = <input onChange={this.handleInput.bind(this)} min="1" value={this.props.pageNumber} type="number" max={this.props.pagesLength}/>;
 		let pagesMax = <span id="pages-max">{this.props.pagesLength}</span>;
 
 		return (
@@ -20,16 +23,6 @@ class ActionBar extends React.Component {
 				</div>
 			</div>
 		);
-	}
-	componentDidMount() {
-		document.getElementById('pages-input').onkeypress = function(e) {
-			if (!e) e = window.event;
-			var keyCode = e.keyCode || e.which;
-			if (keyCode == '13'){
-				this.props.setPage(event.target.value);
-				return false;
-			}
-		}.bind(this);
 	}
 }
 

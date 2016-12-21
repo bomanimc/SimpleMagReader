@@ -61,7 +61,7 @@ class Main extends React.Component {
 		}
 	}
 	setPage(pageNumber) {
-		pageNumber = Math.min(Math.max(parseInt(number), 1), this.state.pages.length);
+		pageNumber = Math.min(Math.max(parseInt(pageNumber), 1), this.state.pages.length);
 
 		this.setState({
 			pageNumber: pageNumber

@@ -4,6 +4,7 @@
             "pageNumber": 1,
             "content" : {  
                 "pageType" : "one-page",
+                "pages" : 1,
                 "namedHash" : "fake",
                 "assets" : [
                     "mags/OnePageTest.png"
@@ -14,6 +15,7 @@
             "pageNumber": 2,
             "content" : {  
                 "pageType" : "two-page",
+                "pages" : 2,
                 "uri" : "fake",
                 "assets" : [
                     "http://dialupstuff.com/magazineAssets/summer2016/page-4.jpg",
@@ -25,6 +27,7 @@
             "pageNumber": 4,
             "content" : {  
                 "pageType" : "two-page",
+                "pages" : 2,
                 "uri" : "fake",
                 "assets" : [
                     "http://dialupstuff.com/magazineAssets/summer2016/page-6.jpg",

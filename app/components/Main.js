@@ -15,7 +15,8 @@ class Main extends React.Component {
         this.state = {
       		pageNumber : 1,
       		pages: [],
-      		sectionIndex: 0
+      		sectionIndex: 0,
+      		length: 0
 	    };
     }
 	componentDidMount() {
@@ -25,28 +26,36 @@ class Main extends React.Component {
 			(response) => response.json()
 		).then(
 			(data) => {
-				let sectionFromHash = this.pageHashToSectionIndex(this.props.location, data.sections);
+				let page = this.getPageHash(this.props.location);
+				let sectionFromHash = this.pageToSectionIndex(page, data.sections);
+
+				let totalLength = data.sections.reduce(function(a, b) {
+					return a + b.content.pages;
+				}, 0);
 
 				this.setState({
 					sectionIndex: sectionFromHash.sectionIndex,
 					pageNumber: sectionFromHash.pageNumber,
 					pages: data.sections,
+					length: totalLength
 				});
 			}
 		)
 	}
 	componentWillReceiveProps(nextProps) {
-		let sectionFromHash = this.pageHashToSectionIndex(nextProps.location, this.state.pages);
+		let page = this.getPageHash(nextProps.location);
+		let sectionFromHash = this.pageToSectionIndex(page, this.state.pages);
 
 		this.setState({
 			sectionIndex: sectionFromHash.sectionIndex,
 			pageNumber: sectionFromHash.pageNumber
 		});
 	}
-	pageHashToSectionIndex(location, sections) {
+	getPageHash(location) {
 		let page = location.hash.match(/\d+/g);
-		page !== null ? parseInt(page[0]) : 1;
-
+		return page !== null ? parseInt(page[0]) : 1;
+	}
+	pageToSectionIndex(page, sections) {
 		let prev = -1;
 		let index = 0;
 
@@ -91,10 +100,13 @@ class Main extends React.Component {
 		}
 	}
 	setPage(pageNumber) {
-		pageNumber = Math.min(Math.max(parseInt(pageNumber), 1), this.state.pages.length);
+		pageNumber = Math.min(Math.max(parseInt(pageNumber), 1), this.state.length);
+
+		let sectionFromPage = this.pageToSectionIndex(pageNumber, this.state.pages);
 
 		this.setState({
-			pageNumber: pageNumber
+			sectionIndex: sectionFromPage.sectionIndex,
+			pageNumber: sectionFromPage.pageNumber
 		}, 
 		function() {
 			browserHistory.push("/#" + this.state.pageNumber);
@@ -112,7 +124,7 @@ class Main extends React.Component {
 		return (
 			<div className={cx('main')}>
 				<div className={cx('header')}>
-					<ActionBar pageNumber={this.state.pageNumber} pagesLength={this.state.pages.length} setPage={this.setPage.bind(this)} />
+					<ActionBar pageNumber={this.state.pageNumber} pagesLength={this.state.length} setPage={this.setPage.bind(this)} />
 				</div>
 				<div className={cx('content')}>
 					<Paginator pages={this.state.pages} sectionIndex={this.state.sectionIndex} />

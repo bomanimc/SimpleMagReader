@@ -33,13 +33,37 @@ class Main extends React.Component {
 		)
 	}
 	componentWillReceiveProps(nextProps) {
+		let sectionFromHash = this.pageHashToSectionIndex(nextProps.location);
+
 		this.setState({
-			pageNumber: this.getCurrentPage(nextProps.location),
+			sectionIndex: sectionFromHash.sectionIndex,
+			pageNumber: sectionFromHash.pageNumber
 		});
 	}
-	getCurrentPage(location) {
+	pageHashToSectionIndex(location) {
 		let page = location.hash.match(/\d+/g);
-		return page !== null ? parseInt(page[0]) : 1;
+		page !== null ? parseInt(page[0]) : 1;
+
+		let prev = -1;
+		let index = 0;
+
+		for (let section of this.state.pages) {
+			let num = section.pageNumber;
+
+			if ((prev != -1) && page < num) {
+				break;
+			}
+			else {
+				prev = num;
+			}
+
+			index++
+		}
+
+		return {
+			sectionIndex: this.state.pages.findIndex(section => section.pageNumber == prev),
+			pageNumber: prev
+		};
 	}
 	nextPage() {
 		if (this.state.sectionIndex < this.state.pages.length) {

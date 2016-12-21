@@ -1,14 +1,16 @@
 {
-	"assets" : {
-		"strings" : {
+	"assets": {
+		"strings": {
 			"title": "DIAL UP MAGAZINE"
 		},
 		"icons" : {
 			"leftArrow": "./assets/icons/left-arrow.svg",
 			"rightArrow": "./assets/icons/right-arrow.svg"
 		},
-		"styles" : {
-			"font" : "KOTH2"
+		"styles": {
+			"font": "KOTH2",
+			"fontColor": "#000000",
+			"backgroundColor": "#FFFFFF"
 		}
 	}
 }

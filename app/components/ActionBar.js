@@ -13,8 +13,13 @@ class ActionBar extends React.Component {
 		let input = <input onChange={this.handleInput.bind(this)} min="1" value={this.props.page} type="number" max={this.props.pagesLength}/>;
 		let pagesMax = <span id="pages-max">{this.props.pagesLength}</span>;
 
+		let settableStyles = {
+			fontFamily: Assets.assets.styles.font,
+			color: Assets.assets.styles.fontColor
+		}
+
 		return (
-			<div className={cx('header')} style={{"fontFamily": Assets.assets.styles.font}}>
+			<div className={cx('header')} style={settableStyles}>
 				<div className={cx('title')}>
 					<div>{Assets.assets.strings.title}</div>
 				</div>

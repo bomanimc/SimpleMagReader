@@ -1,6 +1,7 @@
 import React from 'react';
 import { browserHistory } from 'react-router';
 import classNames from 'classnames/bind';
+import Assets from '../../public/assets/assets.map.json';
 import styles from '../styles/Main.css';
 import Paginator from './Paginator';
 import ActionBar from './ActionBar';
@@ -122,7 +123,7 @@ class Main extends React.Component {
 	}
 	render() {
 		return (
-			<div className={cx('main')}>
+			<div className={cx('main')} style={{backgroundColor: Assets.assets.styles.backgroundColor}}>
 				<div className={cx('header')}>
 					<ActionBar page={this.getPageHash(this.props.location)} pageNumber={this.state.pageNumber} pagesLength={this.state.length} setPage={this.setPage.bind(this)} />
 				</div>

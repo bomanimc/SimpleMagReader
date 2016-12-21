@@ -7,7 +7,7 @@ let cx = classNames.bind(styles);
 
 class ArrowButton extends React.Component {
 	render() {
-		let arrow = (this.props.direction == 1) ? Assets.rightArrow : Assets.leftArrow;
+		let arrow = (this.props.direction == 1) ? Assets.assets.icons.rightArrow : Assets.assets.icons.leftArrow;
 		let arrowSettings = cx({
 			arrowLeft: this.props.direction == -1,
 			arrowRight: this.props.direction == 1,

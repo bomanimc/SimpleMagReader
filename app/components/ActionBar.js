@@ -14,9 +14,9 @@ class ActionBar extends React.Component {
 		let pagesMax = <span id="pages-max">{this.props.pagesLength}</span>;
 
 		return (
-			<div className={cx('header')}>
+			<div className={cx('header')} style={{"fontFamily": Assets.assets.styles.font}}>
 				<div className={cx('title')}>
-					<div>{Assets.title}</div>
+					<div>{Assets.assets.strings.title}</div>
 				</div>
 				<div className={cx('pages')}>
 					Page {input} / {pagesMax}

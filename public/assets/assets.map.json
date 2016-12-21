@@ -1,5 +1,14 @@
 {
-	"title": "DIAL UP MAGAZINE",
-	"leftArrow": "./assets/icons/left-arrow.svg",
-	"rightArrow": "./assets/icons/right-arrow.svg"
+	"assets" : {
+		"strings" : {
+			"title": "DIAL UP MAGAZINE"
+		},
+		"icons" : {
+			"leftArrow": "./assets/icons/left-arrow.svg",
+			"rightArrow": "./assets/icons/right-arrow.svg"
+		},
+		"styles" : {
+			"font" : "KOTH2"
+		}
+	}
 }

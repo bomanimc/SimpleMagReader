@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 var path = require('path');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
@@ -37,6 +38,10 @@ module.exports = {
                 test: /\.css$/,
                 loader: ExtractTextPlugin.extract("css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]")
             },
+            {
+                test: /\.(eot|svg|ttf|woff|woff2)$/,
+                loader: ExtractTextPlugin.extract('file?name=src/static/fonts/[name].[ext]')
+            }
 
 		]
 	},

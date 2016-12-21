@@ -1,3 +1,13 @@
+@font-face {
+	font-family: 'KOTH2';
+	src: url('../assets/fonts/KOTH/KingOfTheHill2.eot'); /* IE9 Compat Modes */
+	src: url('../assets/fonts/KOTH/KingOfTheHill2.eot?#iefix') format('embedded-opentype'),
+	url('../assets/fonts/KOTH/KingOfTheHill2.woff2') format('woff2'),
+	url('../assets/fonts/KOTH/KingOfTheHill2.woff') format('woff'),
+	url('../assets/fonts/KOTH/KingOfTheHill2.ttf')  format('truetype'),
+	url('../assets/fonts/KOTH/KingOfTheHill2.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
+
 html, body {
 	margin: 0px;
 	height: 100%;

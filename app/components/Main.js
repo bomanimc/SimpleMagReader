@@ -75,10 +75,10 @@ class Main extends React.Component {
 	}
 	getShouldHide(direction) {
 		if (direction == -1) {
-			return this.state.pageNumber == 1;
+			return this.state.sectionIndex == 0;
 		}
 		else {
-			return this.state.pageNumber == this.state.pages.length;
+			return this.state.sectionIndex == this.state.pages.length - 1;
 		}
 	}
 	render() {

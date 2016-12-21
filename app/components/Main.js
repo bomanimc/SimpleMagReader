@@ -25,29 +25,32 @@ class Main extends React.Component {
 			(response) => response.json()
 		).then(
 			(data) => {
+				let sectionFromHash = this.pageHashToSectionIndex(this.props.location, data.sections);
+
 				this.setState({
-					pageNumber: data.sections[this.state.sectionIndex].pageNumber,
+					sectionIndex: sectionFromHash.sectionIndex,
+					pageNumber: sectionFromHash.pageNumber,
 					pages: data.sections,
 				});
 			}
 		)
 	}
 	componentWillReceiveProps(nextProps) {
-		let sectionFromHash = this.pageHashToSectionIndex(nextProps.location);
+		let sectionFromHash = this.pageHashToSectionIndex(nextProps.location, this.state.pages);
 
 		this.setState({
 			sectionIndex: sectionFromHash.sectionIndex,
 			pageNumber: sectionFromHash.pageNumber
 		});
 	}
-	pageHashToSectionIndex(location) {
+	pageHashToSectionIndex(location, sections) {
 		let page = location.hash.match(/\d+/g);
 		page !== null ? parseInt(page[0]) : 1;
 
 		let prev = -1;
 		let index = 0;
 
-		for (let section of this.state.pages) {
+		for (let section of sections) {
 			let num = section.pageNumber;
 
 			if ((prev != -1) && page < num) {
@@ -61,7 +64,7 @@ class Main extends React.Component {
 		}
 
 		return {
-			sectionIndex: this.state.pages.findIndex(section => section.pageNumber == prev),
+			sectionIndex: sections.findIndex(section => section.pageNumber == prev),
 			pageNumber: prev
 		};
 	}

@@ -7,13 +7,16 @@ let cx = classNames.bind(styles);
 
 class ActionBar extends React.Component {
 	render() {
+		let input = <input min="1" value={this.props.pageNumber} type="number" max={this.props.pagesLength}/>;
+		let pagesMax = <span id="pages-max">{this.props.pagesLength}</span>;
+		
 		return (
 			<div className={cx('header')}>
 				<div className={cx('title')}>
 					<div>{Assets.title}</div>
 				</div>
-				<div className={cx('page-input')}>
-					Page <input min="1" type="number" max="48"/> / <span id="pages-max">48</span>
+				<div className={cx('pages-input')}>
+					Page {input} / {pagesMax}
 				</div>
 			</div>
 		);

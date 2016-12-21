@@ -60,6 +60,16 @@ class Main extends React.Component {
 			});
 		}
 	}
+	setPage(pageNumber) {
+		pageNumber = Math.min(Math.max(parseInt(number), 1), this.state.pages.length);
+
+		this.setState({
+			pageNumber: pageNumber
+		}, 
+		function() {
+			browserHistory.push("/#" + this.state.pageNumber);
+		});
+	}
 	getShouldHide(direction) {
 		if (direction == -1) {
 			return this.state.pageNumber == 1;
@@ -72,7 +82,7 @@ class Main extends React.Component {
 		return (
 			<div className={cx('main')}>
 				<div className={cx('header')}>
-					<ActionBar />
+					<ActionBar pageNumber={this.state.pageNumber} pagesLength={this.state.pages.length} setPage={this.setPage.bind(this)} />
 				</div>
 				<div className={cx('content')}>
 					<Paginator pages={this.state.pages} pageNumber={this.state.pageNumber} />

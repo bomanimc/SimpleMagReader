@@ -1,0 +1,12 @@
+.header {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.title {
+	font-size: 15px;
+	margin-right: 2%;
+}
+
+.page-input {
+}

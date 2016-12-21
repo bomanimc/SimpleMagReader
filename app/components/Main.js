@@ -3,6 +3,7 @@ import { browserHistory } from 'react-router';
 import classNames from 'classnames/bind';
 import styles from '../styles/Main.css';
 import Paginator from './Paginator';
+import ActionBar from './ActionBar';
 import ArrowButton from './ArrowButton';
 
 let cx = classNames.bind(styles);
@@ -70,8 +71,13 @@ class Main extends React.Component {
 	render() {
 		return (
 			<div className={cx('main')}>
+				<div className={cx('header')}>
+					<ActionBar />
+				</div>
+				<div className={cx('content')}>
+					<Paginator pages={this.state.pages} pageNumber={this.state.pageNumber} />
+				</div>
 				<ArrowButton changePage={this.prevPage.bind(this)} direction={-1} shouldHide={this.getShouldHide.bind(this)}/>
-				<Paginator pages={this.state.pages} pageNumber={this.state.pageNumber} />
 				<ArrowButton changePage={this.nextPage.bind(this)} direction={1} shouldHide={this.getShouldHide.bind(this)}/>
 			</div>
 		);
